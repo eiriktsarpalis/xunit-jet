@@ -14,7 +14,7 @@ Currently, there is one function, `Assert.equalDeep <expected> <actual>`, which 
 
 ## What's done
 
-Recursive handling of generics, lists, arrays, sequences, records, discriminated unions, and primitives.
+Recursive handling of generics, lists, arrays, sequences, records, discriminated unions, tuples, and primitives.
 
 ## What's pending
 
