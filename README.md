@@ -26,6 +26,53 @@ None! Expect this list to grow though...
 
 # Examples
 
+```fsharp
+
+type SampleTypeInner =
+    { foo : int option
+      bar : string list }
+
+type SampleTypeOuter =
+    | SomeLabel
+    | SomeData of SampleTypeInner list
+
+let expected =
+    [ { SampleTypeInner.foo = None
+        SampleTypeInner.bar = [ "one" ; "two" ] }
+      { SampleTypeInner.foo = Some 3
+        SampleTypeInner.bar = [] } ]
+    |> SampleTypeOuter.SomeData
+
+
+let [<Fact>] ``sample1`` () =
+    let actual = SampleTypeOuter.SomeLabel
+    equalDeep expected actual
+```
+
+
+```fsharp
+
+let [<Fact>] ``sample2`` () =
+    let actual =
+        [ { SampleTypeInner.foo = None
+            SampleTypeInner.bar = [ "one" ; "two" ] } ]
+        |> SampleTypeOuter.SomeData
+    equalDeep expected actual
+```
+    
+```fsharp
+
+let [<Fact>] ``sample3`` () =
+    let actual =
+        [ { SampleTypeInner.foo = None
+            SampleTypeInner.bar = [ "one" ; "xxx" ] }
+          { SampleTypeInner.foo = Some 3
+            SampleTypeInner.bar = [] } ]
+        |> SampleTypeOuter.SomeData
+    equalDeep expected actual
+```
+
+
 
 # Maintainer(s)
 
