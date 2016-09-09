@@ -4,7 +4,13 @@
 
 # Deets
 
+## Why?
+
+[**xUnit**](https://github.com/xunit/xunit) is a powerful library that is great for unit testing, but has no understanding of native F# types. If you run `Assert.Equal(<expected>, <actual>)`, it is able to detect inequality between F# types, but provide no meaningful information.
+
 ## What it does
+
+Currently, there is one function, `Assert.equalDeep <expected> <actual>`, which is an extension of `Assert.Equal`. It executes `Assert.Equal`, and if inequality is detected, `equalDeep` performs deep introspection of F# types to find the first granular point of inequality. Deep details are provided on what the differences are.
 
 ## What's done
 
@@ -15,7 +21,7 @@
 
 # Maintainer(s)
 
-- [@randalldavis](https://github.com/randalldavis)
+- Rand Davis ([@randalldavis](https://github.com/randalldavis))
 
 # License
 
