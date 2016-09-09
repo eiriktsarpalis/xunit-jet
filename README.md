@@ -48,6 +48,7 @@ let [<Fact>] ``sample1`` () =
     let actual = SampleTypeOuter.SomeLabel
     equalDeep expected actual
 ```
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample1.PNG" width="100%" height="100%" border="10"/>
 
 
 ```fsharp
@@ -59,6 +60,7 @@ let [<Fact>] ``sample2`` () =
         |> SampleTypeOuter.SomeData
     equalDeep expected actual
 ```
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample2.PNG" width="100%" height="100%" border="10"/>
     
 ```fsharp
 
@@ -71,8 +73,7 @@ let [<Fact>] ``sample3`` () =
         |> SampleTypeOuter.SomeData
     equalDeep expected actual
 ```
-
-
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample3.PNG" width="100%" height="100%" border="10"/>
 
 # Maintainer(s)
 
