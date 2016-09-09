@@ -10,11 +10,15 @@
 
 ## What it does
 
-Currently, there is one function, `Assert.equalDeep <expected> <actual>`, which is an extension of `Assert.Equal`. It executes `Assert.Equal`, and if inequality is detected, `equalDeep` performs deep introspection of F# types to find the first granular point of inequality. Deep details are provided on what the differences are.
+Currently, there is one function, `Assert.equalDeep <expected> <actual>`, which is an extension of `Assert.Equal`. It executes `Assert.Equal`, and if inequality is detected, `equalDeep` performs deep introspection of F# types to find the first granular point of inequality. Details are provided on what the differences are.
 
 ## What's done
 
+Recursive handling of generics, lists, arrays, sequences, records, discriminated unions, and primitives.
+
 ## What's pending
+
+Handling of maps and sets.
 
 # Examples
 
