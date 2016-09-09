@@ -20,6 +20,10 @@ Recursive handling of generics, lists, arrays, sequences, records, discriminated
 
 Handling of maps and sets.
 
+## Known issues
+
+None! Expect this list to grow though...
+
 # Examples
 
 
