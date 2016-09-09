@@ -68,7 +68,9 @@ module Assert =
                     recurse e a f.PropertyType f.Name)
 
         let assertCollection (expected:'b list) (actual:'b list) (collectionType:string) =
-            compare (expected |> List.length) (actual |> List.length)
+            compare
+                (expected |> List.length)
+                (actual |> List.length)
                 (sprintf "%A collections were found of differing lengths. The expected length was %A but the actual was %A. The expected collection was %A and the actual was %A"
                     collectionType
                     (expected |> List.length)
