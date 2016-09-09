@@ -128,7 +128,7 @@ module Assert =
                     compare (e.GetType().Name) (a.GetType().Name) (sprintf "Discriminated union field type is expected to be '%A' but is '%A'" (e.GetType().Name) (a.GetType().Name)) (Some eUnionCaseInfo.Name)
                     match e.GetType() |> FSharpType.IsRecord with
                     | true -> assertRecord (e.GetType()) e a
-                    | false -> compare (sprintf "%A" expected) (sprintf "%A" actual) (sprintf "Value is expected to be '%A' but is '%A'" expected actual) (Some eUnionCaseInfo.Name)
+                    | false -> recurse e a (e.GetType()) eUnionCaseInfo.Name
         else compare (sprintf "%A" expected) (sprintf "%A" actual) (sprintf "Value is expected to be '%A' but is '%A'" expected actual) None
 
     let equalDeep<'a> (expected:'a) (actual:'a) =
