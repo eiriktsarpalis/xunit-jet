@@ -1,0 +1,9 @@
+source https://www.nuget.org/api/v2/
+
+nuget xUnit 2.1.0
+nuget xUnit.abstractions
+nuget xUnit.assert 2.1.0
+nuget xUnit.core 2.1.0
+nuget xUnit.extensibility.core 2.1.0
+nuget xUnit.extensibility.execution 2.1.0
+nuget xUnit.Runner.VisualStudio 2.1.0 version_in_path: true
