@@ -1,6 +1,6 @@
 # xunit-jet - Jet.com's F# extension to xUnit
 
-**xUnit-Jet** is an extension to xUnit that understands native F# types and is capable of doing deep & informative comparisons.
+**xUnit-Jet** is an extension to **xUnit** that understands native F# types and is capable of doing deep & informative comparisons.
 
 # Deets
 
