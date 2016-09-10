@@ -27,53 +27,70 @@ None! Expect this list to grow though...
 # Examples
 
 ```fsharp
-
 type SampleTypeInner =
-    { foo : int option
-      bar : string list }
+    { primitiveOption : int option
+      stringList : string list
+      intTuple : int * int }
 
 type SampleTypeOuter =
     | SomeLabel
     | SomeData of SampleTypeInner list
 
 let expected =
-    [ { SampleTypeInner.foo = None
-        SampleTypeInner.bar = [ "one" ; "two" ] }
-      { SampleTypeInner.foo = Some 3
-        SampleTypeInner.bar = [] } ]
+    [ { SampleTypeInner.primitiveOption = None
+        SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+        SampleTypeInner.intTuple = (101, 102) }
+      { SampleTypeInner.primitiveOption = Some 3
+        SampleTypeInner.stringList = []
+        SampleTypeInner.intTuple = (201, 202) } ]
     |> SampleTypeOuter.SomeData
 
-
-let [<Fact>] ``sample1`` () =
+```fsharp
+let [<Fact>] ``inequality of discriminated union label`` () =
     let actual = SampleTypeOuter.SomeLabel
     equalDeep expected actual
 ```
-<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample1.PNG" width="100%" height="100%" border="10"/>
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/duLabel.PNG" width="100%" height="100%" border="10"/>
 
 
 ```fsharp
-
-let [<Fact>] ``sample2`` () =
+let [<Fact>] ``inequality of list size`` () =
     let actual =
-        [ { SampleTypeInner.foo = None
-            SampleTypeInner.bar = [ "one" ; "two" ] } ]
+        [ { SampleTypeInner.primitiveOption = None
+            SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+            SampleTypeInner.intTuple = (101, 102) } ]
         |> SampleTypeOuter.SomeData
     equalDeep expected actual
 ```
-<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample2.PNG" width="100%" height="100%" border="10"/>
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/listSize.PNG" width="100%" height="100%" border="10"/>
     
 ```fsharp
-
-let [<Fact>] ``sample3`` () =
+let [<Fact>] ``inequality of value within a list`` () =
     let actual =
-        [ { SampleTypeInner.foo = None
-            SampleTypeInner.bar = [ "one" ; "xxx" ] }
-          { SampleTypeInner.foo = Some 3
-            SampleTypeInner.bar = [] } ]
+        [ { SampleTypeInner.primitiveOption = None
+            SampleTypeInner.stringList = [ "stringOne" ; "stringXXX" ]
+            SampleTypeInner.intTuple = (101, 102) }
+          { SampleTypeInner.primitiveOption = Some 3
+            SampleTypeInner.stringList = []
+            SampleTypeInner.intTuple = (201, 202) } ]
         |> SampleTypeOuter.SomeData
     equalDeep expected actual
 ```
-<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/Sample3.PNG" width="100%" height="100%" border="10"/>
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/listValue.PNG" width="100%" height="100%" border="10"/>
+
+```fsharp
+let [<Fact>] ``inequality of value within a tuple`` () =
+    let actual =
+        [ { SampleTypeInner.primitiveOption = None
+            SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+            SampleTypeInner.intTuple = (101, 102) }
+          { SampleTypeInner.primitiveOption = Some 3
+            SampleTypeInner.stringList = []
+            SampleTypeInner.intTuple = (201, 999) } ]
+        |> SampleTypeOuter.SomeData
+    equalDeep expected actual
+```
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/tupleValue.PNG" width="100%" height="100%" border="10"/>
 
 # Maintainer(s)
 
