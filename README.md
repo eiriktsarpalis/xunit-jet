@@ -44,6 +44,7 @@ let expected =
         SampleTypeInner.stringList = []
         SampleTypeInner.intTuple = (201, 202) } ]
     |> SampleTypeOuter.SomeData
+```
     
 ```fsharp
 let [<Fact>] ``inequality of record value`` () =
