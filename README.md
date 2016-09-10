@@ -44,6 +44,20 @@ let expected =
         SampleTypeInner.stringList = []
         SampleTypeInner.intTuple = (201, 202) } ]
     |> SampleTypeOuter.SomeData
+    
+```fsharp
+let [<Fact>] ``inequality of record value`` () =
+    let actual =
+        [ { SampleTypeInner.primitiveOption = None
+            SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+            SampleTypeInner.intTuple = (101, 102) }
+          { SampleTypeInner.primitiveOption = None
+            SampleTypeInner.stringList = []
+            SampleTypeInner.intTuple = (201, 202) } ]
+        |> SampleTypeOuter.SomeData
+    equalDeep expected actual
+```
+<img src="https://github.com/jet/xunit-jet/blob/master/meta/images/recordValue.PNG" width="100%" height="100%" border="10"/>
 
 ```fsharp
 let [<Fact>] ``inequality of discriminated union label`` () =
