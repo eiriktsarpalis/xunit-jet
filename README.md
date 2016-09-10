@@ -24,7 +24,7 @@ Handling of maps and sets.
 
 None! Expect this list to grow though...
 
-# Examples
+# Examples (non-exhaustive)
 
 ```fsharp
 type SampleTypeInner =
