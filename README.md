@@ -18,7 +18,7 @@ Recursive handling of generics, lists, arrays, sequences, records, discriminated
 
 ### What's pending
 
-Handling of maps and sets.
+Handling of maps, dicts, and sets.
 
 ### Known issues
 
