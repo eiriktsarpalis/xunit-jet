@@ -160,3 +160,72 @@ module Assert =
             let e = { i = { g = { a = "a" ; b = "b" } ; h = { a = "c" ; b = "d" } } ; j = D { a = "e" ; b = "f" } }
             let a = { i = { g = { a = "a" ; b = "b" } ; h = { a = "z" ; b = "d" } } ; j = D { a = "e" ; b = "f" } }
             Assert.Throws<EqualDeepException> (fun _ -> equalDeep e a)
+
+
+
+
+        // sample unit tests to understand failure capabilities / messaging
+
+        type SampleTypeInner =
+            { primitiveOption : int option
+              stringList : string list
+              intTuple : int * int }
+
+        type SampleTypeOuter =
+            | SomeLabel
+            | SomeData of SampleTypeInner list
+
+        let expected =
+            [ { SampleTypeInner.primitiveOption = None
+                SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+                SampleTypeInner.intTuple = (101, 102) }
+              { SampleTypeInner.primitiveOption = Some 3
+                SampleTypeInner.stringList = []
+                SampleTypeInner.intTuple = (201, 202) } ]
+            |> SampleTypeOuter.SomeData
+
+
+        let [<Fact>] ``inequality of record value`` () =
+            let actual =
+                [ { SampleTypeInner.primitiveOption = None
+                    SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+                    SampleTypeInner.intTuple = (101, 102) }
+                  { SampleTypeInner.primitiveOption = None
+                    SampleTypeInner.stringList = []
+                    SampleTypeInner.intTuple = (201, 202) } ]
+                |> SampleTypeOuter.SomeData
+            equalDeep expected actual
+
+        let [<Fact>] ``inequality of discriminated union label`` () =
+            let actual = SampleTypeOuter.SomeLabel
+            equalDeep expected actual
+
+        let [<Fact>] ``inequality of list size`` () =
+            let actual =
+                [ { SampleTypeInner.primitiveOption = None
+                    SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+                    SampleTypeInner.intTuple = (101, 102) } ]
+                |> SampleTypeOuter.SomeData
+            equalDeep expected actual
+
+        let [<Fact>] ``inequality of value within a list`` () =
+            let actual =
+                [ { SampleTypeInner.primitiveOption = None
+                    SampleTypeInner.stringList = [ "stringOne" ; "stringXXX" ]
+                    SampleTypeInner.intTuple = (101, 102) }
+                  { SampleTypeInner.primitiveOption = Some 3
+                    SampleTypeInner.stringList = []
+                    SampleTypeInner.intTuple = (201, 202) } ]
+                |> SampleTypeOuter.SomeData
+            equalDeep expected actual
+
+        let [<Fact>] ``inequality of value within a tuple`` () =
+            let actual =
+                [ { SampleTypeInner.primitiveOption = None
+                    SampleTypeInner.stringList = [ "stringOne" ; "stringTwo" ]
+                    SampleTypeInner.intTuple = (101, 102) }
+                  { SampleTypeInner.primitiveOption = Some 3
+                    SampleTypeInner.stringList = []
+                    SampleTypeInner.intTuple = (201, 999) } ]
+                |> SampleTypeOuter.SomeData
+            equalDeep expected actual

@@ -93,24 +93,7 @@ module Assert =
         let assertTuple expected actual =
             assertCollection (expected |> FSharpValue.GetTupleFields |> Array.toList) (actual |> FSharpValue.GetTupleFields |> Array.toList) "tuple"
 
-        let t = typeof<'a>
-        if t |> FSharpType.IsRecord then
-            assertRecord t expected actual
-        elif t.IsGenericType && t.GetGenericTypeDefinition() = typedefof<list<_>> then
-            match (expected, actual) with
-            | (ListToList e, ListToList a) -> assertList e a
-            | _ -> fail "Failed pattern matching on list" None
-        elif t.IsGenericType && t.GetGenericTypeDefinition() = typedefof<seq<_>> then
-            match (expected, actual) with
-            | (SeqToSeq e, SeqToSeq a) -> assertSeq e a
-            | _ -> fail "Failed pattern matching on sequence" None
-        elif t.IsArray then
-            match (expected, actual) with
-            | (ArrayToArray e, ArrayToArray a) -> assertArray e a
-            | _ -> fail "Failed pattern matching on array" None
-        elif t |> FSharpType.IsTuple then
-            assertTuple expected actual
-        elif t |> FSharpType.IsUnion then
+        let assertDiscriminatedUnion expected actual =
             let getDiscriminatedUnionUnderlyingObject obj = (obj, obj.GetType(), true) |> FSharpValue.GetUnionFields
 
             let (eUnionCaseInfo, eUnionFields) = getDiscriminatedUnionUnderlyingObject expected
@@ -129,6 +112,26 @@ module Assert =
                     match e.GetType() |> FSharpType.IsRecord with
                     | true -> assertRecord (e.GetType()) e a
                     | false -> recurse e a (e.GetType()) eUnionCaseInfo.Name
+
+        let t = typeof<'a>
+        if t |> FSharpType.IsRecord then
+            assertRecord t expected actual
+        elif t.IsGenericType && t.GetGenericTypeDefinition() = typedefof<list<_>> then
+            match (expected, actual) with
+            | (ListToList e, ListToList a) -> assertList e a
+            | _ -> fail "Failed pattern matching on list" None
+        elif t.IsGenericType && t.GetGenericTypeDefinition() = typedefof<seq<_>> then
+            match (expected, actual) with
+            | (SeqToSeq e, SeqToSeq a) -> assertSeq e a
+            | _ -> fail "Failed pattern matching on sequence" None
+        elif t.IsArray then
+            match (expected, actual) with
+            | (ArrayToArray e, ArrayToArray a) -> assertArray e a
+            | _ -> fail "Failed pattern matching on array" None
+        elif t |> FSharpType.IsTuple then
+            assertTuple expected actual
+        elif t |> FSharpType.IsUnion then
+            assertDiscriminatedUnion expected actual
         else compare (sprintf "%A" expected) (sprintf "%A" actual) (sprintf "Value is expected to be '%A' but is '%A'" expected actual) None
 
     let equalDeep<'a> (expected:'a) (actual:'a) =
@@ -147,13 +150,3 @@ module Assert =
 
             // the type isn't something special to F#, so it's either a string (which Assert will print relevant info for), or a more complex object that isn't handled here; let the failed assertion bubble out
             | false -> reraise()
-
-    let success choice =
-        match choice with
-        | Choice1Of2 _ -> ()
-        | Choice2Of2 _ -> new XunitException("Expected Success but got Failure") |> raise
-
-    let failure choice =
-        match choice with
-        | Choice1Of2 _ -> new XunitException("Expected Failure but got Success") |> raise
-        | Choice2Of2 _ -> ()
