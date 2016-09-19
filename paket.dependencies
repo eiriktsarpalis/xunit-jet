@@ -7,3 +7,5 @@ nuget xUnit.core 2.1.0
 nuget xUnit.extensibility.core 2.1.0
 nuget xUnit.extensibility.execution 2.1.0
 nuget xUnit.Runner.VisualStudio 2.1.0 version_in_path: true
+
+github eiriktsarpalis/TypeShape:1.0 src/TypeShape/TypeShape.fs

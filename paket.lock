@@ -1,6 +1,5 @@
 NUGET
   remote: https://www.nuget.org/api/v2
-  specs:
     Microsoft.NETCore.Platforms (1.0.1) - framework: dnxcore50
     Microsoft.NETCore.Targets (1.0.1) - framework: dnxcore50
     System.Collections (4.0.11) - framework: dnxcore50
@@ -24,27 +23,27 @@ NUGET
       System.Text.Encoding (>= 4.0.11) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard15
       System.Threading.Tasks (>= 4.0.11) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard15
     System.Linq (4.1) - framework: dnxcore50
-      System.Collections (>= 4.0.11) - framework: dnxcore50, netstandard10, >= netstandard15
-      System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, >= netstandard15
-      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard15
+      System.Collections (>= 4.0.11) - framework: dnxcore50, netstandard10, >= netstandard16
+      System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, >= netstandard16
+      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard16
     System.Linq.Expressions (4.1) - framework: dnxcore50
-      System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.Globalization (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.IO (>= 4.1) - framework: dnxcore50, >= netstandard15
-      System.Linq (>= 4.1) - framework: dnxcore50, >= netstandard15
-      System.Reflection (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard15
-      System.Reflection.Emit.ILGeneration (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Reflection.Emit.Lightweight (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Reflection.Extensions (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Reflection.Primitives (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Reflection.TypeExtensions (>= 4.1) - framework: dnxcore50, >= netstandard15
-      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard15
-      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard15
-      System.Threading (>= 4.0.11) - framework: dnxcore50, >= netstandard15
+      System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.Globalization (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.IO (>= 4.1) - framework: dnxcore50, >= netstandard16
+      System.Linq (>= 4.1) - framework: dnxcore50, >= netstandard16
+      System.Reflection (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard16
+      System.Reflection.Emit.ILGeneration (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Reflection.Emit.Lightweight (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Reflection.Extensions (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Reflection.Primitives (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Reflection.TypeExtensions (>= 4.1) - framework: dnxcore50, >= netstandard16
+      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard16
+      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard16
+      System.Threading (>= 4.0.11) - framework: dnxcore50, >= netstandard16
     System.ObjectModel (4.0.12) - framework: dnxcore50
       System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard13
       System.Diagnostics.Debug (>= 4.0.11) - framework: dnxcore50, >= netstandard13
@@ -95,12 +94,12 @@ NUGET
       Microsoft.NETCore.Targets (>= 1.0.1) - framework: dnxcore50, netstandard10, >= netstandard13
       System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, >= netstandard13
     System.Text.RegularExpressions (4.1) - framework: dnxcore50
-      System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.Globalization (>= 4.0.11) - framework: dnxcore50, >= netstandard15
-      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard15
-      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard15
-      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard15
-      System.Threading (>= 4.0.11) - framework: dnxcore50, >= netstandard15
+      System.Collections (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.Globalization (>= 4.0.11) - framework: dnxcore50, >= netstandard16
+      System.Resources.ResourceManager (>= 4.0.1) - framework: dnxcore50, >= netstandard16
+      System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, netstandard13, >= netstandard16
+      System.Runtime.Extensions (>= 4.1) - framework: dnxcore50, >= netstandard16
+      System.Threading (>= 4.0.11) - framework: dnxcore50, >= netstandard16
     System.Threading (4.0.11) - framework: dnxcore50
       System.Runtime (>= 4.1) - framework: dnxcore50, netstandard10, >= netstandard13
       System.Threading.Tasks (>= 4.0.11) - framework: dnxcore50, netstandard10, >= netstandard13
@@ -155,4 +154,7 @@ NUGET
       System.Threading.Tasks (>= 4.0) - framework: dnxcore50
       xunit.abstractions (>= 2.0) - framework: dnxcore50
       xunit.extensibility.core (2.1) - framework: >= net45, dnx451, dnxcore50, monoandroid, monotouch, xamarinios, winv4.5, wpv8.0, wpav8.1
-    xunit.runner.visualstudio (2.1) - version_in_path: true
+    xunit.runner.visualstudio (2.1.0) - version_in_path: true
+GITHUB
+  remote: eiriktsarpalis/TypeShape
+    src/TypeShape/TypeShape.fs (e27b1e7cbff320103ce909b0d035bf509f6fb947)
