@@ -157,4 +157,4 @@ NUGET
     xunit.runner.visualstudio (2.1.0) - version_in_path: true
 GITHUB
   remote: eiriktsarpalis/TypeShape
-    src/TypeShape/TypeShape.fs (e27b1e7cbff320103ce909b0d035bf509f6fb947)
+    src/TypeShape/TypeShape.fs (920cdeda153b66ab6d1cfb4f032f4ef8daca86b1)

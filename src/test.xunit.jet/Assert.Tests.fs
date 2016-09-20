@@ -69,7 +69,7 @@ module Assert =
         let [<Fact>] ``equalDeep uses original error for unsupported type`` () =
             let e = new Uri("http://localhost.com")
             let a = new Uri("http://localhostB.com")
-            Assert.Throws<EqualException> (fun _ -> equalDeep e a)
+            Assert.Throws<EqualDeepException> (fun _ -> equalDeep e a)
 
         let [<Fact>] ``equalDeep succeeds for unsupported type within option expecting Some`` () =
             let e = { d = new Uri("http://localhost.com") |> Some }
